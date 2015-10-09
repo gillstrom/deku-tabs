@@ -1,0 +1,8 @@
+.Tabs-heading {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.Tabs-heading + .Tabs-heading {
+	margin-left: 5px;
+}
