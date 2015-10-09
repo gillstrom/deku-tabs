@@ -32,7 +32,7 @@ function render({props, state}, setState) {
 	function getHeadings() {
 		return items.map((el, i) => {
 			return (
-				<div class={['Tabs-heading', {'is-activeTab': activeTab === i}]} onClick={() => setState({activeTab: i})}>
+				<div class={['Tabs-heading', {'is-active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
 					{el.heading}
 				</div>
 			);

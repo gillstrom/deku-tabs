@@ -6,3 +6,7 @@
 .Tabs-heading + .Tabs-heading {
 	margin-left: 5px;
 }
+
+.Tabs-heading.is-active {
+	text-decoration: underline;
+}
