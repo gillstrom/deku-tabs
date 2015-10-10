@@ -1,4 +1,4 @@
-# deku-tabs
+# deku-tabs [![Build Status](https://travis-ci.org/gillstrom/deku-tabs.svg?branch=master)](https://travis-ci.org/gillstrom/deku-tabs)
 
 > Simple tab component for deku
 
