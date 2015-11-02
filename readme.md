@@ -21,7 +21,8 @@ export function render() {
 		heading: 'Heading 1'
 	}, {
 		content: <div>Content 2</div>,
-		heading: 'Heading 2'
+		heading: 'Heading 2',
+		active: true
 	}, {
 		content: <div>Content 3</div>,
 		heading: 'Heading 3'
