@@ -2,9 +2,6 @@
 import dom from 'magic-virtual-element';
 
 const propTypes = {
-	activeTab: {
-		type: 'number'
-	},
 	class: {
 		type: 'string'
 	},
@@ -20,9 +17,13 @@ function initialState() {
 }
 
 function afterMount({props}, el, setState) {
-	if (typeof props.activeTab === 'number') {
-		setState({activeTab: props.activeTab});
-	}
+	const {items} = props;
+
+	items.forEach((el, i) => {
+		if (el.active === true) {
+			setState({activeTab: i});
+		}
+	});
 }
 
 function render({props, state}, setState) {

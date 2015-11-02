@@ -11,11 +11,12 @@ const items = [{
 	heading: 'Heading 2'
 }, {
 	content: <div>Content 3</div>,
-	heading: 'Heading 3'
+	heading: 'Heading 3',
+	active: true
 }];
 
 const app = tree(
-	<Tabs class='TestClass' items={items} activeTab={1}/>
+	<Tabs class='TestClass' items={items}/>
 );
 
 render(app, document.body);
