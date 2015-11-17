@@ -31,13 +31,11 @@ function render({props, state}, setState) {
 	const {activeTab} = state;
 
 	function getHeadings() {
-		return items.map((el, i) => {
-			return (
-				<div class={['Tabs-heading', {'is-active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
-					{el.heading}
-				</div>
-			);
-		});
+		return items.map((el, i) => (
+			<div class={['Tabs-heading', {'is-active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
+				{el.heading}
+			</div>
+		));
 	}
 
 	return (
