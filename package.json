@@ -17,6 +17,7 @@
     "prepublish": "babel index.js --out-file dist.js",
     "test": "xo index.js test.js && ava"
   },
+  "main": "dist.js",
   "files": [
     "dist.js"
   ],
