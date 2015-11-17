@@ -1,6 +1,6 @@
 {
   "name": "deku-tabs",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Simple tab component for deku",
   "license": "MIT",
   "repository": "gillstrom/deku-tabs",
@@ -49,13 +49,18 @@
     ]
   },
   "xo": {
-    "envs": ["browser"],
+    "envs": [
+      "browser"
+    ],
     "esnext": true,
     "extends": [
       "xo-react"
     ],
     "rules": {
-      "jsx-quotes": [2,"prefer-single"],
+      "jsx-quotes": [
+        2,
+        "prefer-single"
+      ],
       "react/no-unknown-property": 0,
       "react/prop-types": 0,
       "quote-props": 0
