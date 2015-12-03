@@ -14,7 +14,7 @@ const items = [{
 	heading: 'Heading 3'
 }];
 
-test(t => {
+test(() => {
 	const mock = componentMock(Tabs);
 	const el = mock.render({props: {
 		class: 'CustomTabs',
@@ -36,6 +36,4 @@ test(t => {
 		assertElement.hasClass(child, 'Tabs-content');
 		assertElement.hasChildren(el);
 	});
-
-	t.end();
 });
