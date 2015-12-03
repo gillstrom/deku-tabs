@@ -1,6 +1,6 @@
 # deku-tabs [![Build Status](https://travis-ci.org/gillstrom/deku-tabs.svg?branch=master)](https://travis-ci.org/gillstrom/deku-tabs)
 
-> Simple tab component for deku
+> Simple tab component for [deku](https://github.com/dekujs/deku)
 
 
 ## Install
@@ -20,9 +20,9 @@ export function render() {
 		content: <div>Content 1</div>,
 		heading: 'Heading 1'
 	}, {
+		active: true,
 		content: <div>Content 2</div>,
-		heading: 'Heading 2',
-		active: true
+		heading: 'Heading 2'
 	}, {
 		content: <div>Content 3</div>,
 		heading: 'Heading 3'

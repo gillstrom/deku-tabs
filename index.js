@@ -31,9 +31,17 @@ function render({props, state}, setState) {
 	const {activeTab} = state;
 
 	function getHeadings() {
-		return items.map((el, i) => (
-			<div class={['Tabs-heading', {'is-active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
-				{el.heading}
+		return items.map(({heading}, i) => (
+			<div class={['Tabs-heading', {'Tabs-heading--active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
+				{heading}
+			</div>
+		));
+	}
+
+	function getTabs() {
+		return items.map(({content}, i) => (
+			<div class={['Tab', {'Tab--active': activeTab === i}]}>
+				{content}
 			</div>
 		));
 	}
@@ -44,7 +52,7 @@ function render({props, state}, setState) {
 				{getHeadings()}
 			</div>
 			<div class='Tabs-content'>
-				{items[activeTab].content}
+				{getTabs()}
 			</div>
 		</div>
 	);
