@@ -10,11 +10,3 @@
 .Tabs-heading--active {
 	text-decoration: underline;
 }
-
-.Tab {
-	display: none;
-}
-
-.Tab--active {
-	display: block;
-}

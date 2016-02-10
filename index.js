@@ -40,7 +40,7 @@ function render({props, state}, setState) {
 
 	function getTabs() {
 		return items.map(({content}, i) => (
-			<div class={['Tab', {'Tab--active': activeTab === i}]}>
+			<div class={['Tab', {'Tab--active': activeTab === i}]} style={{display: activeTab === i ? 'block' : 'none'}}>
 				{content}
 			</div>
 		));
