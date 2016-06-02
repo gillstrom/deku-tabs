@@ -1,5 +1,6 @@
 /** @jsx dom */
 import dom from 'magic-virtual-element';
+import objectAssign from 'object-assign';
 
 const propTypes = {
 	class: {
@@ -7,16 +8,47 @@ const propTypes = {
 	},
 	items: {
 		type: 'array'
+	},
+	onClick: {
+		type: 'function'
 	}
 };
 
-function initialState() {
+const initialState = () => {
 	return {
 		activeTab: 0
 	};
-}
+};
 
-function afterMount({props}, el, setState) {
+const onHeadingClick = (x, activeTab, i, setState, onClick) => () => {
+	if (activeTab === i) {
+		return;
+	}
+
+	setState({activeTab: i});
+
+	if (onClick) {
+		onClick(objectAssign(x, {i}));
+	}
+};
+
+const getHeadings = ({items, onClick}, {activeTab}, setState) => {
+	return items.map((x, i) => (
+		<div class={['Tabs-heading', {'Tabs-heading--active': activeTab === i}]} onClick={onHeadingClick(x, activeTab, i, setState, onClick)}>
+			{x.heading}
+		</div>
+	));
+};
+
+const getTabs = ({items}, {activeTab}) => {
+	return items.map(({content}, i) => (
+		<div class={['Tab', {'Tab--active': activeTab === i}]} style={{display: activeTab === i ? 'block' : 'none'}}>
+			{content}
+		</div>
+	));
+};
+
+const afterMount = ({props}, el, setState) => {
 	const {items} = props;
 
 	items.forEach((el, i) => {
@@ -24,38 +56,19 @@ function afterMount({props}, el, setState) {
 			setState({activeTab: i});
 		}
 	});
-}
+};
 
-function render({props, state}, setState) {
-	const {items} = props;
-	const {activeTab} = state;
-
-	function getHeadings() {
-		return items.map(({heading}, i) => (
-			<div class={['Tabs-heading', {'Tabs-heading--active': activeTab === i}]} onClick={() => setState({activeTab: i})}>
-				{heading}
-			</div>
-		));
-	}
-
-	function getTabs() {
-		return items.map(({content}, i) => (
-			<div class={['Tab', {'Tab--active': activeTab === i}]} style={{display: activeTab === i ? 'block' : 'none'}}>
-				{content}
-			</div>
-		));
-	}
-
+const render = ({props, state}, setState) => {
 	return (
 		<div class={['Tabs', props.class]}>
 			<div class='Tabs-headings'>
-				{getHeadings()}
+				{getHeadings(props, state, setState)}
 			</div>
 			<div class='Tabs-content'>
-				{getTabs()}
+				{getTabs(props, state)}
 			</div>
 		</div>
 	);
-}
+};
 
 export default {afterMount, initialState, propTypes, render};

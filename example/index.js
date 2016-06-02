@@ -15,6 +15,7 @@ const items = [{
 	heading: 'Heading 3'
 }];
 
-const app = tree(<Tabs class='TestClass' items={items}/>);
+const onClick = x => console.log(x);
+const app = tree(<Tabs class='TestClass' items={items} onClick={onClick}/>);
 
 render(app, document.body);

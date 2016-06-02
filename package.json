@@ -30,7 +30,8 @@
     "tabs"
   ],
   "dependencies": {
-    "magic-virtual-element": "^1.0.6"
+    "magic-virtual-element": "^1.0.6",
+    "object-assign": "^4.1.0"
   },
   "devDependencies": {
     "assert-element": "^0.3.1",
