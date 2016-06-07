@@ -59,7 +59,7 @@ const afterMount = ({props}, el, setState) => {
 	});
 };
 
-const shouldUpdate = ({props, state}, nextProps, {activeTab}) => !deepEqual(props, nextProps) || !state.activeTab === activeTab;
+const shouldUpdate = ({props, state}, nextProps, {activeTab}) => !deepEqual(props, nextProps) || state.activeTab !== activeTab;
 
 const render = ({props, state}, setState) => {
 	return (
