@@ -30,6 +30,7 @@
     "tabs"
   ],
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "magic-virtual-element": "^1.0.6",
     "object-assign": "^4.1.0"
   },
@@ -37,7 +38,7 @@
     "assert-element": "^0.3.1",
     "ava": "*",
     "babel": "^5.8.23",
-    "babel-eslint": "^4.1.1",
+    "babel-eslint": "^6.0.4",
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "component-mock": "0.0.2",

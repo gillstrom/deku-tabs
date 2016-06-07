@@ -1,4 +1,5 @@
 /** @jsx dom */
+import deepEqual from 'deep-equal';
 import dom from 'magic-virtual-element';
 import objectAssign from 'object-assign';
 
@@ -58,6 +59,8 @@ const afterMount = ({props}, el, setState) => {
 	});
 };
 
+const shouldUpdate = ({props, state}, nextProps, {activeTab}) => !deepEqual(props, nextProps) || !state.activeTab === activeTab;
+
 const render = ({props, state}, setState) => {
 	return (
 		<div class={['Tabs', props.class]}>
@@ -71,4 +74,4 @@ const render = ({props, state}, setState) => {
 	);
 };
 
-export default {afterMount, initialState, propTypes, render};
+export default {afterMount, initialState, propTypes, render, shouldUpdate};
