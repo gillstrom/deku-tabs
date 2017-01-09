@@ -49,17 +49,11 @@ const getTabs = ({items}, {activeTab}) => {
 	));
 };
 
-const afterMount = ({props}, el, setState) => {
-	const {items} = props;
+const setActive = (items, setState) => items.forEach((el, i) => el.active === true && setState({activeTab: i}));
 
-	items.forEach((el, i) => {
-		if (el.active === true) {
-			setState({activeTab: i});
-		}
-	});
-};
-
+const afterMount = ({props}, el, setState) => setActive(props.items, setState);
 const shouldUpdate = ({props, state}, nextProps, {activeTab}) => !deepEqual(props, nextProps) || state.activeTab !== activeTab;
+const afterUpdate = ({props}, prevProps, prevState, setState) => !deepEqual(props, prevProps) && setActive(props.items, setState);
 
 const render = ({props, state}, setState) => {
 	return (
@@ -74,4 +68,4 @@ const render = ({props, state}, setState) => {
 	);
 };
 
-export default {afterMount, initialState, propTypes, render, shouldUpdate};
+export default {afterMount, afterUpdate, initialState, propTypes, render, shouldUpdate};
