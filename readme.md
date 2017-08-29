@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save deku-tabs
+$ npm install deku-tabs
 ```
 
 
@@ -15,23 +15,23 @@ $ npm install --save deku-tabs
 ```js
 import Tabs from 'deku-tabs';
 
-export function render() {
-	const items = [{
-		content: <div>Content 1</div>,
-		heading: 'Heading 1'
-	}, {
-		active: true,
-		content: <div>Content 2</div>,
-		heading: 'Heading 2'
-	}, {
-		content: <div>Content 3</div>,
-		heading: 'Heading 3'
-	}];
+const items = [{
+	content: <div>Content 1</div>,
+	heading: 'Heading 1'
+}, {
+	active: true,
+	content: <div>Content 2</div>,
+	heading: 'Heading 2'
+}, {
+	content: <div>Content 3</div>,
+	heading: 'Heading 3'
+}];
 
-	return (
-		<Tabs items={items}/>
-	);
-}
+const render = () => (
+	<Tabs items={items}/>
+);
+
+export default {render};
 ```
 
 

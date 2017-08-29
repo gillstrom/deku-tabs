@@ -1,7 +1,9 @@
 import assertElement from 'assert-element';
 import componentMock from 'component-mock';
 import test from 'ava';
-import Tabs from './';
+import Tabs from '.';
+
+const mock = componentMock(Tabs);
 
 const items = [{
 	content: 'Content 1',
@@ -14,26 +16,42 @@ const items = [{
 	heading: 'Heading 3'
 }];
 
-test(() => {
-	const mock = componentMock(Tabs);
-	const el = mock.render({props: {
-		class: 'CustomTabs',
-		items
-	}});
+test('has Tabs class', () => {
+	const m = mock.render();
+	assertElement.hasClass(m, 'Tabs');
+});
 
-	assertElement.isNode(el, 'div');
-	assertElement.hasClass(el, 'Tabs');
-	assertElement.hasClass(el, 'CustomTabs');
+test('has class prop', () => {
+	const m = mock.render({props: {class: 'Foo'}});
+	assertElement.hasClass(m, 'Foo');
+});
 
-	assertElement.hasChild(el, 0, child => {
-		assertElement.isNode(child, 'div');
-		assertElement.hasClass(child, 'Tabs-headings');
-		assertElement.hasChildren(el);
+test('does not render any tabs or headings when items is empty', () => {
+	const m = mock.render();
+
+	assertElement.hasChildren(m, x => {
+		assertElement.notHasChildren(x);
 	});
+});
 
-	assertElement.hasChild(el, 1, child => {
-		assertElement.isNode(child, 'div');
-		assertElement.hasClass(child, 'Tabs-content');
-		assertElement.hasChildren(el);
+test('render headings', () => {
+	const m = mock.render({props: items});
+
+	assertElement.hasChild(m, 0, x => {
+		assertElement.hasChildren(x, y => {
+			assertElement.hasClass(y, 'Tabs-heading');
+			assertElement.hasChildren(y);
+		});
+	});
+});
+
+test('render tabs', () => {
+	const m = mock.render({props: items});
+
+	assertElement.hasChild(m, 1, x => {
+		assertElement.hasChildren(x, y => {
+			assertElement.hasClass(y, 'Tab');
+			assertElement.hasChildren(y);
+		});
 	});
 });
